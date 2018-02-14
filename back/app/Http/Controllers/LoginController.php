@@ -34,7 +34,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        echo "teste";
+        return response()->json($request, 201);
     }
 
     /**
