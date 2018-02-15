@@ -12,14 +12,5 @@
 */
 
 Route::get('/', function () {
-	return view("welcome");
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/auth/token', function() {
-	return csrf_token();
+    return view('welcome');
 });
