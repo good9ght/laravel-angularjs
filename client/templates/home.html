@@ -1,1 +1,41 @@
-<button>Autenticar</button>
+<ul>
+    <li><button ng-click="ctrl.autenticar()" id="autenticar">Autenticar</button></li>
+    <li><button ng-click="ctrl.token()" id="token">Token</button></li>
+    <li><button ng-click="ctrl.tokens()" id="tokens">Tokens</button></li>
+</ul>
+<style media="screen">
+
+    ul {
+        list-style-type: none;
+        margin: auto;
+        width: 100px;
+        margin-top: auto
+    }
+
+    ul li {
+        margin: 5px
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        padding: auto;
+        color: white;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    }
+
+    #autenticar {
+        background-color: red
+    }
+
+    #token {
+        background-color: orange
+    }
+
+    #tokens {
+        background-color: blue
+    }
+</style>
