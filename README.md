@@ -1,1 +1,3 @@
-Pequeno teste de validação do client AngularJS com Laravel Passport.
+# Laravel Passport e AngularJS
+
+Pequeno teste de API Laravel Passport com client feito com AngularJS.
