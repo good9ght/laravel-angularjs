@@ -6,45 +6,38 @@ app.config(function($routeProvider) {
         templateUrl : "templates/home.html",
         controllerAs: "ctrl",
         controller  : function($window, $routeParams, $http) {
-            console.log($routeParams);
-            let routeParams = $routeParams;
-            console.log(routeParams.access_token);
-            this.accessToken = routeParams.access_token
-            this.userToken = "";
+
+            this.token = $routeParams;
+            console.log(this.token);
+            this.accessToken = this.token.access_token
+            this.usuario = [];
+
             this.autenticar = function() {
+                // Redirecionando para a página de autenticação com os parâmetros necessários:
+                // client_id
+                // redirect_uri
+                // response_type = token
+                // scope
+
                 $window.location.href = "http://127.0.0.1:8000/oauth/authorize?client_id=1&redirect_uri&response_type=token&scope"
             }
 
-            this.token = function() {
-                let t = this;
+            this.getUsuario = function() {
+                let self = this;
                 $http({
                     method  : 'GET',
-                    url     : 'http://127.0.0.1:8000/api/user/token',
+                    url     : 'http://127.0.0.1:8000/api/user',
                     headers : {
                         'Accept': 'Application/json',
-                        'Authorization' : 'Bearer '+ t.accessToken,
+                        'Authorization' : 'Bearer '+ self.accessToken,
 
                     }
                 })
                 .then(function(resultado) {
                     console.log(resultado.data);
-                    t.userToken = resultado.data.id;
+                    self.usuario = resultado.data;
                 });
             }
-
-            this.tokens = function() {
-                let t = this;
-                $http({
-                    method  : 'GET',
-                    url     : 'http://127.0.0.1:8000/oauth/personal-access-tokens',
-                    headers : {
-                        'Accept': 'Application/json',
-                        'Authorization' : 'Bearer '+ t.userToken,
-
-                    }
-                });
-            }
-
          }
     });
 });

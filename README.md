@@ -1,1 +1,1 @@
-Tentando implementar Laravel Passport e criar um client com AngularJS
+Pequeno teste de validação do client AngularJS com Laravel Passport.
