@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user/token', function () {
 Route::middleware('auth:api')->get('/user', function () {
     return response()->json(\Auth::user());
 });
+
+Route::middleware('auth:api')->post('/posts', function(Request $request) {
+    return response()->json($request->input());
+});

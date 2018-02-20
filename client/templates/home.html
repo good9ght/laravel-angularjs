@@ -1,28 +1,46 @@
-
+<div class="container">
     <ul>
         <li><button ng-click="ctrl.autenticar()" id="autenticar">Autenticar</button></li>
         <li><span style="color:red">Access Token</span>: {{ ctrl.token.access_token }}</li>
         <li><span style="color:red">Expires in</span>: {{ ctrl.token.expires_in }}</li>
         <li><span style="color:red">Token Type</span>: {{ ctrl.token.token_type }}</li>
     </ul>
+</div>
+<div class="container">
     <ul>
-        <li><button ng-click="ctrl.getUsuario()" id="usuario">Usuário</button></li>
+        <li><button ng-click="ctrl.get()" id="get">Get</button></li>
         <li><span style="color: blue">Id</span>: {{ ctrl.usuario.id }}</li>
         <li><span style="color: blue">Name</span>: {{ ctrl.usuario.name }}</li>
         <li><span style="color: blue">Email</span>: {{ ctrl.usuario.email }}</li>
         <li><span style="color: blue">Created at</span>: {{ ctrl.usuario.created_at }}</li>
         <li><span style="color: blue">Updated at</span>: {{ ctrl.usuario.updated_at }}</li>
     </ul>
+</div>
+<div class="container">
+    <ul>
+        <li>Titulo</li>
+        <li><input type="text" name="titulo" value="teste" ng-model="post.titulo"></li>
+        <li>Conteudo</li>
+        <li><input type="text" name="conteudo" value=" conteudo teste" ng-model="post.conteudo"></li>
+        <li><li><button ng-click="ctrl.post(post)" id="post">Post</button></li></li>
+    </ul>
+</div>
+
 <style media="screen">
     * {
         word-wrap: break-word;
     }
-    
+
+    .container {
+        width: 90%;
+        background-color: #f4f4f4;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 10px
+    }
+
     ul {
         list-style-type: none;
-        background-color: #e2e2e2;
-        border-radius: 4px;
-        padding: 15px
     }
 
     ul li {
@@ -44,7 +62,11 @@
         background-color: red
     }
 
-    #usuario {
+    #get {
         background-color: blue
+    }
+
+    #post {
+        background-color: purple
     }
 </style>

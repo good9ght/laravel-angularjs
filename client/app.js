@@ -22,7 +22,7 @@ app.config(function($routeProvider) {
                 $window.location.href = "http://127.0.0.1:8000/oauth/authorize?client_id=1&redirect_uri&response_type=token&scope"
             }
 
-            this.getUsuario = function() {
+            this.get = function() {
                 let self = this;
                 $http({
                     method  : 'GET',
@@ -36,6 +36,23 @@ app.config(function($routeProvider) {
                 .then(function(resultado) {
                     console.log(resultado.data);
                     self.usuario = resultado.data;
+                });
+            }
+
+            this.post = function(dados) {
+                let self = this;
+                $http({
+                    method  : 'POST',
+                    url     : 'http://127.0.0.1:8000/api/posts',
+                    data: dados,
+                    headers : {
+                        'Accept': 'Application/json',
+                        'Authorization' : 'Bearer '+ self.accessToken,
+
+                    }
+                })
+                .then(function(resultado) {
+                    console.log(resultado.data);
                 });
             }
          }
