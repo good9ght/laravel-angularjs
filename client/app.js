@@ -1,11 +1,11 @@
-let app = angular.module("meuApp", ["ngRoute"]);
+let app = angular.module("meuApp", ["ngRoute", 'ngCookies']);
 
 app.config(function($routeProvider) {
     $routeProvider
     .when("/home", {
         templateUrl : "templates/home.html",
         controllerAs: "ctrl",
-        controller  : function($window, $routeParams, $http) {
+        controller  : function($window, $routeParams, $http, $cookies) {
 
             this.token = $routeParams;
             console.log(this.token);
@@ -24,16 +24,17 @@ app.config(function($routeProvider) {
 
             this.get = function() {
                 let self = this;
+                console.log(self.accessToken);
                 $http({
                     method  : 'GET',
                     url     : 'http://127.0.0.1:8000/api/user',
                     headers : {
                         'Accept': 'Application/json',
                         'Authorization' : 'Bearer '+ self.accessToken,
-
                     }
                 })
                 .then(function(resultado) {
+                    console.log($cookies.getAll());
                     console.log(resultado.data);
                     self.usuario = resultado.data;
                 });
